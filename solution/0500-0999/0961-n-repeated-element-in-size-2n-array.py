@@ -4,10 +4,7 @@ class Solution(object):
         :type A: List[int]
         :rtype: int
         """
-        dict = {}
+        N = len(A)/2
         for a in A:
-            if a not in dict:
-                dict[a] = 1
-            else:
-                dict[a] += 1
-        return dict.keys()[dict.values().index(len(A)/2)]
+            if A.count(a) == N:
+                return a
