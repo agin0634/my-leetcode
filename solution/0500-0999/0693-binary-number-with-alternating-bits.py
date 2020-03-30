@@ -4,10 +4,5 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
-        curr = 2
-        for i in bin(n)[2:]:
-            if i != curr:
-                curr = i
-            else:
-                return False
-        return True
+        return False if '00' in bin(n) or '11' in bin(n) else True
+    
