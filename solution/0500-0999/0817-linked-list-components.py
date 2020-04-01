@@ -11,11 +11,14 @@ class Solution(object):
         :type G: List[int]
         :rtype: int
         """
-        G = set(G)
-        res = 0
+        G =  set(G)
         curr = head
+        count = 0
         while curr:
-            if curr.val in G and getattr(curr.next, 'val', None)  not in G:
-                res += 1
-            curr = curr.next
-        return res
+            if curr.val in G:
+                count += 1
+                while curr and curr.val in G:
+                    curr = curr.next
+            else:
+                curr = curr.next
+        return count
