@@ -12,27 +12,15 @@ class Solution(object):
         :rtype: ListNode
         """
         ans = curr = ListNode(0)
-        o = 0
-        while l1 or l2 or o != 0:
-            if l1 and l2:
-                m = l1.val + l2.val + o
+        sum = 0
+        while l1 or l2 or sum:
+            if l1:
+                sum += l1.val
                 l1 = l1.next
+            if l2:
+                sum += l2.val
                 l2 = l2.next
-            elif l1:
-                m = l1.val + o
-                l1 = l1.next
-            elif l2:
-                m = l2.val + o
-                l2 = l2.next
-            else:
-                m = o
-            
-            if m < 10:
-                o = 0
-                curr.next = ListNode(m)
-            else:
-                m %= 10
-                o = 1
-                curr.next = ListNode(m)
+            curr.next = ListNode(sum%10)
             curr = curr.next
+            sum //= 10
         return ans.next
