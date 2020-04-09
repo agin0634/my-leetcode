@@ -22,22 +22,21 @@ class Solution(object):
                 stemp = temp.next
                 temp = t
                 count = 0
-                prev = None
-                while stemp:
-                    curr = stemp
-                    stemp = stemp.next
-                    curr.next = prev
-                    prev = curr
+                prev = self.reverse(stemp)
                 while prev:
                     r.next = ListNode(prev.val)
                     prev = prev.next
                     r = r.next
             head = head.next
-            
         if count > 0:
-            while temp.next:
-                r.next = ListNode(temp.next.val)
-                temp = temp.next
-                r = r.next
-                
+            r.next = temp.next
         return res.next
+    
+    def reverse(self, h):
+        prev = None
+        while h:
+                curr = h
+                h = h.next
+                curr.next = prev
+                prev = curr
+        return prev
