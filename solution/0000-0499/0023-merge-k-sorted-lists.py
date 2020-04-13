@@ -11,16 +11,14 @@ class Solution(object):
         :rtype: ListNode
         """
         res = r = ListNode(0)
-        while lists:
-            curr = float('inf')
-            count = 0
-            for i,e in enumerate(lists):
-                if e and e.val < curr:
-                    curr = e.val
-                    count = i
-            if lists[count] == None:
-                break
-            r.next = ListNode(lists[count].val)
+        heap = []
+        for i in lists:
+            while i:
+                heap.append(i.val)
+                i = i.next
+        heap = sorted(heap)
+        
+        for h in heap:
+            r.next = ListNode(h)
             r = r.next
-            lists[count] = lists[count].next
         return res.next
