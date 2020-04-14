@@ -12,18 +12,13 @@ class Solution(object):
         :type root: Node
         :rtype: List[int]
         """
-        if not root:
-            return None
-        
         self.res = []
         self.dfs(root)
-        self.res.append(root.val)
         return self.res
-                
+        
     def dfs(self, node):
-        if not node.children:
-            return 
-        else:
+        if node:
             for c in node.children:
                 self.dfs(c)
-                self.res.append(c.val)
+            self.res.append(node.val)
+        return None
