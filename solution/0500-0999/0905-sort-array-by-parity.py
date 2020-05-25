@@ -4,10 +4,5 @@ class Solution(object):
         :type A: List[int]
         :rtype: List[int]
         """
-        res = []
-        for a in A:
-            if a % 2 == 0:
-                res.insert(0, a)
-            else:
-                res.append(a)
-        return res
+        A.sort(key = lambda x:x%2)
+        return A
